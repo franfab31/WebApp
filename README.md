@@ -1,11 +1,32 @@
 # Compiti: Group Assignment Manager
 
-A full-stack web app where teachers create open-ended questions for groups of students, students answer them together, and teachers grade the answers.
-I built it as an exam project for the *Web Applications I* course at Politecnico di Torino.
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=nodedotjs&logoColor=white)
+![Passport](https://img.shields.io/badge/Passport-sessions-34E27A?logo=passport&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-database-003B57?logo=sqlite&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?logo=bootstrap&logoColor=white)
 
-**Stack:** React 19 + Vite + React-Bootstrap (client) · Node.js + Express + Passport (server) · SQLite (database). The user interface is in Italian.
+A full-stack web app where teachers create open-ended questions for groups of students, students answer them together, and teachers grade the answers. The user interface is in Italian.
 
-![Teacher dashboard](./img/teacher_home.png)
+> **Exam project** — Web Applications I, Politecnico di Torino  
+> **Author:** Francesco Fabrizi
+
+---
+
+## Contents
+
+1. [Features](#features)
+2. [Screenshots](#screenshots)
+3. [Getting started](#getting-started)
+4. [Test accounts](#test-accounts)
+5. [Project structure](#project-structure)
+6. [Client routes](#client-routes)
+7. [Main React components](#main-react-components)
+8. [Database](#database)
+9. [REST API](#rest-api)
+
+---
 
 ## Features
 
@@ -23,6 +44,8 @@ I built it as an exam project for the *Web Applications I* course at Politecnico
 
 **Authentication:** session-based login with Passport (local strategy). Passwords are stored as salted hashes. Every API except login is restricted to authenticated users and checks the user's role and ownership of the resource.
 
+---
+
 ## Screenshots
 
 | | |
@@ -31,6 +54,8 @@ I built it as an exam project for the *Web Applications I* course at Politecnico
 | ![Create task](./img/Screenshot2.png)<br>**New task:** question and group of 2–6 students | ![Grading](./img/teacher_grading.png)<br>**Grading:** the teacher reads the group's answer and assigns a grade, which closes the task |
 | ![Student list](./img/Screenshot1.png)<br>**Student list:** open, closed and total tasks and the average grade of each student, sortable | ![Student home](./img/student_home.png)<br>**Student dashboard:** overall average and all the student's tasks with their grades |
 | ![Answer](./img/student_answer.png)<br>**Answering:** a group member writes or edits the answer while the task is open | |
+
+---
 
 ## Getting started
 
@@ -51,6 +76,8 @@ npm run dev
 Then open http://localhost:5173 and log in with one of the [test accounts](#test-accounts).
 The SQLite database (`server/compitidb.sqlite`) is included and already filled with sample data.
 
+---
+
 ## Test accounts
 
 | Role | Username | Password | Notes |
@@ -62,6 +89,8 @@ The SQLite database (`server/compitidb.sqlite`) is included and already filled w
 
 All 20 student accounts use the password `passwordstud`. The other usernames are:
 `esposito.anna`, `ricci.simone`, `barbieri.francesca`, `lombardi.giorgio`, `contini.luca`, `caputo.sara`, `ferro.pietro`, `bianchi.marta`, `verdi.anna`, `neri.matteo`, `gialli.elisa`, `blu.simone`, `viola.francesca`, `marrone.giorgio`, `rosa.luca`, `grigi.sara`, `ferri.clara`, `greco.nicolo`.
+
+---
 
 ## Project structure
 
@@ -82,6 +111,8 @@ WebApp/
 └── img/                    # Screenshots
 ```
 
+---
+
 ## Client routes
 
 | Route | Page |
@@ -96,6 +127,8 @@ WebApp/
 | `/studente/task/:id/domanda` | Task detail: question, grade, answer editor while the task is open |
 | `*` | Not found |
 
+---
+
 ## Main React components
 
 | Component | File | Role |
@@ -108,6 +141,8 @@ WebApp/
 | `TaskForm` | `TaskForm.jsx` | New-task form: student selection and group validation |
 | `NavHeader`, `DefaultLayout`, `NotFound` | | Layout and navigation |
 
+---
+
 ## Database
 
 | Table | Columns |
@@ -115,6 +150,8 @@ WebApp/
 | `Utenti` | `id`, `username`, `pass` (hash), `salt`, `ruolo` (`insegnante` \| `studente`), `nome`, `cognome` |
 | `Task` | `id`, `domanda`, `id_prof`, `stato` (`aperto` \| `chiuso`), `risposta`, `voto` (0–30), `dimensione_gruppo` (2–6) |
 | `Gruppi` | `id_task`, `id_studente` (composite primary key) |
+
+---
 
 ## REST API
 
