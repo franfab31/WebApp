@@ -12,9 +12,9 @@ function LoginForm(props) {
             password: formData.get('password'),
         };
         try {
-            const user = await props.handleLogin(credentials);
+            await props.handleLogin(credentials);
             return { success: true };
-        } catch (error) {
+        } catch {
             return { 
                 error: 'Username e/o password errati'
             };

@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import '../styles/Home.css';
 
-function Home(props) {
+function Home() {
   
   return (
     

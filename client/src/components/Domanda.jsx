@@ -15,6 +15,24 @@ export default function Domanda(props) {
   const [task, setTask] = useState(location.state?.task);
   const [caricamento, setCaricamento] = useState(true);
 
+  // Reload the task details (group members, latest answer) whenever the route id changes.
+  // The hook runs before any early return so React always calls hooks in the same order.
+  useEffect(() => {
+    if (!task || !utente) return;
+    const infotask = async () => {
+      try {
+        setCaricamento(true);
+        const tsk = await API.getTaskInfo(task);
+        setTask(tsk);
+      } catch {
+        // keep the task received from the previous page
+      } finally {
+        setCaricamento(false);
+      }
+    };
+    infotask();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- reload only when the route id changes
+  }, [id]);
 
   if (!task || !utente) {
       return (
@@ -30,24 +48,6 @@ export default function Domanda(props) {
       );
     }
   
-
- const infotask = async () => {
-    try {
-      setCaricamento(true);
-      const tsk = await API.getTaskInfo(task);
-      
-      setTask(tsk);
-    } catch (err) {
-      return(err);
-    } finally {
-      setCaricamento(false);
-    }
-  };
-
-  useEffect(() => {
-    infotask();
-  }, [id]);
-
   if (caricamento) {
     return (
       <Container className="my-4">
@@ -157,7 +157,7 @@ function TaskForm({ task, utente, navigate }) {
         navigate('/professore');
       }
       
-    } catch (err) {
+    } catch {
       return data;
     }
   };

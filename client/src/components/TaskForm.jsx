@@ -4,7 +4,7 @@ import { useNavigate, useLocation, Link } from "react-router";
 import API from "../API/API.mjs";
 import "../styles/TaskForm.css"; 
 
-export default function TaskForm(props) {
+export default function TaskForm() {
 
     const initialState = {
         domanda: "",

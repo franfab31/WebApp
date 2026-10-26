@@ -26,7 +26,7 @@ function App() {
         const userData = await API.getUserInfo();
         setLoggedIn(true);
         setUser(userData);
-      } catch (err) {
+      } catch {
         setLoggedIn(false);
         setUser({});
       } finally {
@@ -38,14 +38,9 @@ function App() {
   }, []);
 
   const handleLogin = async (credentials) => {
-    try {      
-      const user = await API.login(credentials);      
-      setLoggedIn(true);
-      setUser(user);
-      
-    } catch (err) {
-      throw err;
-    }
+    const user = await API.login(credentials);
+    setLoggedIn(true);
+    setUser(user);
   };
 
   const handleLogout = async () => {

@@ -6,17 +6,15 @@ import '../styles/ProfListaStud.css';
 export default function ProfListaStud(props) {
   const [studenti, setStudenti] = useState([]);
 
-  const ListaStud = async () => {
-      try {
-        const data = await API.getStudentStatsByprof(props.user.id); 
-        setStudenti(data);
-      }
-      catch (err) {
-        return(err);
-      }
-  }
-
   useEffect(() => {
+    const ListaStud = async () => {
+      try {
+        const data = await API.getStudentStatsByprof(props.user.id);
+        setStudenti(data);
+      } catch {
+        // leave the current list unchanged if the request fails
+      }
+    };
     ListaStud();
   }, [props.user.id]);
 
