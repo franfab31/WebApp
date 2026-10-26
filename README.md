@@ -5,22 +5,32 @@ I built it as an exam project for the *Web Applications I* course at Politecnico
 
 **Stack:** React 19 + Vite + React-Bootstrap (client) · Node.js + Express + Passport (server) · SQLite (database). The user interface is in Italian.
 
-![Teacher home](./img/Screenshot1.png)
-![Task detail](./img/Screenshot2.png)
+![Teacher dashboard](./img/teacher_home.png)
 
 ## Features
 
 **Teachers**
+
 - Create a task (question) and assign it to a group of 2–6 students.
 - The app blocks groups in which two students have already worked together twice for the same teacher.
 - See all their tasks, read the group's answer and give a grade (0–30). Grading closes the task.
 - Browse the list of students with their average grade on the teacher's tasks, and sort it by several criteria.
 
 **Students**
+
 - See their open and closed tasks, and their overall average across all teachers.
 - Write or edit the group's answer while the task is open, and see the grade once it is closed.
 
 **Authentication:** session-based login with Passport (local strategy). Passwords are stored as salted hashes. Every API except login is restricted to authenticated users and checks the user's role and ownership of the resource.
+
+## Screenshots
+
+| | |
+|---|---|
+| ![Login](./img/login.jpg)<br>**Login** | ![Teacher dashboard](./img/teacher_home.png)<br>**Teacher dashboard:** task counters and the list of assigned tasks, with the ones waiting for a grade highlighted |
+| ![Create task](./img/Screenshot2.png)<br>**New task:** question and group of 2–6 students | ![Grading](./img/teacher_grading.png)<br>**Grading:** the teacher reads the group's answer and assigns a grade, which closes the task |
+| ![Student list](./img/Screenshot1.png)<br>**Student list:** open, closed and total tasks and the average grade of each student, sortable | ![Student home](./img/student_home.png)<br>**Student dashboard:** overall average and all the student's tasks with their grades |
+| ![Answer](./img/student_answer.png)<br>**Answering:** a group member writes or edits the answer while the task is open | |
 
 ## Getting started
 
